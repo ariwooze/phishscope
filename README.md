@@ -219,44 +219,6 @@ The intended investigation workflow is:
 9. Streamlit displays the investigation summary, findings, IOCs, and evidence.
 10. Investigation results may be exported for further analysis.
 
-The planned architecture is:
-
-```text
-                  ┌─────────────────┐
-                  │   .EML Upload   │
-                  └────────┬────────┘
-                           │
-                           ▼
-                  ┌─────────────────┐
-                  │  Email Parser   │
-                  └────────┬────────┘
-                           │
-             ┌─────────────┼─────────────┐
-             ▼             ▼             ▼
-       Header Analysis  URL Analysis  Attachment
-                                      Analysis
-             │             │             │
-             └─────────────┼─────────────┘
-                           ▼
-                  ┌─────────────────┐
-                  │ Threat Intel    │
-                  │ VirusTotal      │
-                  └────────┬────────┘
-                           │
-                           ▼
-                  ┌─────────────────┐
-                  │   Risk Engine   │
-                  └────────┬────────┘
-                           │
-                           ▼
-                  ┌─────────────────┐
-                  │ Investigation   │
-                  │   Dashboard     │
-                  └─────────────────┘
-```
-
-The architecture may change as the project develops.
-
 ## Technology Stack
 
 The following technologies are currently planned for the project:
@@ -593,85 +555,6 @@ Once the relevant features have been implemented, testing is planned to follow a
 
 Exact findings and risk scores may change as the detection rules are refined during development.
 
-## Development Roadmap
-
-### Day 1 — Foundation
-
-- [ ] Create GitHub repository
-- [ ] Create Python virtual environment
-- [ ] Install dependencies
-- [ ] Create project folder structure
-- [ ] Build `.eml` parser
-- [ ] Extract headers
-- [ ] Extract text and HTML bodies
-- [ ] Extract attachments
-
-### Day 2 — Header Investigation
-
-- [ ] Create basic Streamlit dashboard
-- [ ] Display email metadata
-- [ ] Detect From/Reply-To mismatch
-- [ ] Analyze SPF results
-- [ ] Analyze DKIM results
-- [ ] Analyze DMARC results
-- [ ] Display Received headers
-
-### Day 3 — URL Investigation
-
-- [ ] Extract plain-text URLs
-- [ ] Extract HTML links
-- [ ] Extract registered domains
-- [ ] Detect IP-based URLs
-- [ ] Detect URL shorteners
-- [ ] Detect excessive/suspicious subdomains
-- [ ] Detect HTML link destination mismatch
-- [ ] Detect suspicious email language
-
-### Day 4 — Attachments & Threat Intelligence
-
-- [ ] Extract attachment metadata
-- [ ] Calculate SHA-256 hashes
-- [ ] Detect dangerous extensions
-- [ ] Detect double extensions
-- [ ] Configure `.env`
-- [ ] Integrate VirusTotal
-- [ ] Check URL/domain reputation
-- [ ] Check attachment hash reputation
-
-### Day 5 — Detection Engine
-
-- [ ] Standardize finding format
-- [ ] Combine findings from analysis modules
-- [ ] Create risk-scoring rules
-- [ ] Implement Low/Medium/High/Critical classification
-- [ ] Display score explanations
-- [ ] Create IOC summary
-
-### Day 6 — Dashboard
-
-- [ ] Create Overview tab
-- [ ] Create Headers tab
-- [ ] Create URLs tab
-- [ ] Create Attachments tab
-- [ ] Create Email Content tab
-- [ ] Create Raw Evidence tab
-- [ ] Add JSON report export
-- [ ] Improve error handling
-
-### Day 7 — Testing & GitHub
-
-- [ ] Create safe legitimate sample
-- [ ] Create header-anomaly sample
-- [ ] Create URL sample
-- [ ] Create attachment sample
-- [ ] Create combined phishing sample
-- [ ] Test false positives
-- [ ] Fix bugs
-- [ ] Add screenshots
-- [ ] Complete README
-- [ ] Add architecture diagram
-- [ ] Push final version to GitHub
-
 ## Data and Privacy
 
 The project is being designed with the following privacy considerations:
@@ -700,27 +583,6 @@ The first version of PhishScope is expected to have several limitations:
 - The project will initially analyze individual `.eml` files rather than live mailboxes.
 - A low risk score will not guarantee that an email is safe.
 - A security finding should be treated as an investigation lead, not confirmation of an attack.
-
-## Future Enhancements
-
-Features outside the initial one-week development scope may include:
-
-- Domain registration and age analysis
-- Additional threat-intelligence providers
-- DNS reputation checks
-- YARA-based attachment analysis
-- Advanced MIME anomaly detection
-- Machine-learning phishing classification
-- Email campaign correlation
-- Gmail and Microsoft Outlook integration
-- Batch email analysis
-- SIEM integration
-- PDF investigation reports
-- Investigation history
-- Analyst notes
-- Configurable detection rules and thresholds
-
-These features are not part of the initial project scope and may be explored after the core application is completed.
 
 ## Ethical Use
 
