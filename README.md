@@ -224,49 +224,6 @@ The intended link-analysis workflow is:
 6. Findings are combined and assigned severity levels.
 7. The extension displays the investigation result.
 
-```text
-Browser / Webmail
-        │
-        ▼
-┌─────────────────────┐
-│     PhishScope      │
-│ Browser Extension   │
-└──────────┬──────────┘
-           │
-     ┌─────┴──────┐
-     ▼            ▼
- URL Analysis   Email Header
-                 Analysis
-     │            │
-     └─────┬──────┘
-           ▼
-┌─────────────────────┐
-│ Detection Rules     │
-│                     │
-│ URL Structure       │
-│ Link Mismatch       │
-│ Authentication      │
-│ Domain Indicators   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Threat Intelligence │
-│     VirusTotal      │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Explainable Result  │
-│                     │
-│ Risk Classification │
-│ Findings            │
-│ Evidence            │
-└─────────────────────┘
-```
-
-The architecture may change as the project develops.
-
 ## Planned Technology Stack
 
 | Tool | Purpose |
