@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.container {
+    width: 340px;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.subtitle {
+    margin-top: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.url-section {
+    margin-bottom: 15px;
+}
+
+.label {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#current-url {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+
+    font-size: 13px;
+
+    word-break: break-all;
+
+    max-height: 90px;
+    overflow-y: auto;
+}
+
+#analyze-button {
+    width: 100%;
+    padding: 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#analyze-button:hover {
+    opacity: 0.9;
+}
+
+#status {
+    margin-top: 15px;
+
+    font-size: 12px;
+    color: #666;
+
+    text-align: center;
+}

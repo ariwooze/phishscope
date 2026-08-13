@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhishScope</title>
+
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>PhishScope</h1>
+            <p class="subtitle">
+                Phishing Link Analysis
+            </p>
+        </header>
+
+        <main>
+
+            <section class="url-section">
+
+                <p class="label">
+                    Current URL
+                </p>
+
+                <div id="current-url">
+                    Loading...
+                </div>
+
+            </section>
+
+            <button id="analyze-button">
+                Analyze URL
+            </button>
+
+            <div id="status">
+                Ready for analysis
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="popup.js"></script>
+
+</body>
+</html>

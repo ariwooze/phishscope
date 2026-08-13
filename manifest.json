@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "PhishScope",
+  "version": "0.1.0",
+  "description": "A browser extension for phishing link analysis and email triage.",
+
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+
+  "action": {
+    "default_title": "PhishScope",
+    "default_popup": "popup/popup.html"
+  },
+
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}

@@ -511,12 +511,12 @@ All repository samples should use synthetic or reserved testing information rath
 
 ### Phase 1 — Extension Foundation
 
-- [ ] Create repository structure
-- [ ] Create `manifest.json`
-- [ ] Create extension popup
-- [ ] Add extension icons
-- [ ] Load extension in developer mode
-- [ ] Read current browser tab URL
+- [x] Create repository structure
+- [x] Create `manifest.json`
+- [x] Create extension popup
+- [x] Add extension icons
+- [x] Load extension in developer mode
+- [x] Read current browser tab URL
 
 ### Phase 2 — URL Analysis
 
