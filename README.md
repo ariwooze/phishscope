@@ -611,28 +611,6 @@ The first version of PhishScope is expected to have several limitations:
 - A low risk classification will not guarantee that a website or email is safe.
 - Findings should be treated as investigation leads rather than confirmation of malicious activity.
 
-## Future Enhancements
-
-Features outside the initial development scope may include:
-
-- Domain-registration and domain-age analysis
-- Additional threat-intelligence providers
-- QR-code phishing detection
-- Downloaded-file hash analysis
-- Typosquatting detection
-- Improved brand-impersonation analysis
-- Unicode homograph detection
-- Redirect-chain analysis
-- Email-body text analysis
-- Suspicious form detection
-- User-configurable detection rules
-- Investigation history
-- Exportable analysis reports
-- Firefox support
-- Gmail or Outlook integration
-
-These features are not part of the initial scope and may be explored after the core extension is completed.
-
 ## Ethical Use
 
 PhishScope is being developed for cybersecurity education, defensive security analysis, phishing awareness, and authorized investigation.
