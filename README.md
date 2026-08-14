@@ -552,14 +552,22 @@ All repository samples should use synthetic or reserved testing information rath
 
 ### Email Triage
 
-- [ ] Add email-header input
-- [ ] Parse sender information
-- [ ] Parse Reply-To
-- [ ] Parse Return-Path
-- [ ] Extract SPF results
-- [ ] Extract DKIM results
-- [ ] Extract DMARC results
-- [ ] Detect header mismatches
+- [x] Add email-header input
+- [x] Parse From header
+- [x] Parse Reply-To header
+- [x] Parse Return-Path header
+- [x] Parse Subject
+- [x] Parse Message-ID
+- [x] Extract Authentication-Results
+- [x] Extract SPF result
+- [x] Extract DKIM result
+- [x] Extract DMARC result
+- [x] Detect sender / Reply-To mismatch
+- [x] Detect sender / Return-Path mismatch
+- [x] Detect SPF failure
+- [x] Detect DKIM failure
+- [x] Detect DMARC failure
+- [x] Display explainable header findings
 
 ### Risk Analysis
 
@@ -626,8 +634,4 @@ The first version of PhishScope is expected to have several limitations:
 
 PhishScope is being developed for cybersecurity education, defensive security analysis, phishing awareness, and authorized investigation.
 
-Users should investigate only websites, URLs, emails, and systems that they are authorized to examine.
-
-PhishScope should not be used for phishing campaigns, credential theft, unauthorized surveillance, malware delivery, or any other malicious activity.
-
-A PhishScope finding is intended to support investigation and user awareness. It should not be treated as definitive confirmation that an email, website, or URL is malicious.
+Finding is intended to support investigation and user awareness. It should not be treated as definitive confirmation that an email, website, or URL is malicious.

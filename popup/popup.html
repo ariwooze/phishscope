@@ -53,15 +53,32 @@
 
             </section>
 
+            <section class="email-header-section">
 
-            <button id="analyze-button">
-                Analyze Current URL
-            </button>
+                <p class="label">
+                    Email Header Triage
+                </p>
 
-            <button id="inspect-links-button">
-                Inspect Page Links
-            </button>
+                <textarea
+                    id="email-header-input"
+                    placeholder="Paste raw email headers here..."
+                    rows="8"
+                ></textarea>
 
+                <button id="analyze-header-button">
+                    Analyze Email Header
+                </button>
+
+                </section>
+
+
+                <button id="analyze-button">
+                    Analyze Current URL
+                </button>
+
+                <button id="inspect-links-button">
+                    Inspect Page Links
+                </button>
 
             <section
                 id="analysis-results"
@@ -164,6 +181,113 @@
 
             </section>
 
+            <section
+                id="header-analysis-results"
+                class="hidden"
+            >
+
+                <p class="label">
+                    Email Header Analysis
+                </p>
+
+                <div class="url-details">
+
+                    <div class="detail-row">
+                        <span class="detail-label">
+                            From
+                        </span>
+
+                        <span id="header-from">
+                            -
+                        </span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span class="detail-label">
+                            Reply-To
+                        </span>
+
+                        <span id="header-reply-to">
+                            -
+                        </span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span class="detail-label">
+                            Return-Path
+                        </span>
+
+                        <span id="header-return-path">
+                            -
+                        </span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span class="detail-label">
+                            Subject
+                        </span>
+
+                        <span id="header-subject">
+                            -
+                        </span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span class="detail-label">
+                            Message-ID
+                        </span>
+
+                        <span id="header-message-id">
+                           -
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="risk-summary">
+
+                    <p class="label">
+                        Authentication
+                    </p>
+
+                    <div>
+                        SPF:
+                        <strong id="header-spf">
+                            Unknown
+                        </strong>
+                    </div>
+
+                    <div>
+                        DKIM:
+                        <strong id="header-dkim">
+                            Unknown
+                        </strong>
+                    </div>
+
+                    <div>
+                        DMARC:
+                        <strong id="header-dmarc">
+                            Unknown
+                        </strong>
+                   </div>
+
+                </div>
+
+
+                <div class="findings-section">
+
+                    <p class="label">
+                        Header Findings
+                    </p>
+
+                    <div id="header-findings-list">
+                    </div>
+
+                </div>
+
+            </section>
+
             <div id="status">
                 Ready for analysis
             </div>
@@ -173,6 +297,7 @@
     </div>
 
     <script src="../scripts/url_analyzer.js"></script>
+    <script src="../scripts/header_analyzer.js"></script>
     <script src="popup.js"></script>
 
 </body>

@@ -1,0 +1,6 @@
+From: Example Service <support@example.com>
+Reply-To: support@example.com
+Return-Path: <support@example.com>
+Subject: Welcome to Example Service
+Message-ID: <12345@example.com>
+Authentication-Results: mx.example.com; spf=pass; dkim=pass; dmarc=pass

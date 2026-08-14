@@ -114,24 +114,80 @@ document.addEventListener(
                 "inspect-links-button"
             );
 
-
         const pageLinkResultsElement =
             document.getElementById(
                 "page-link-results"
             );
-
 
         const pageLinkSummaryElement =
             document.getElementById(
                 "page-link-summary"
             );
 
-
         const linkMismatchListElement =
             document.getElementById(
                 "link-mismatch-list"
             );
 
+        const emailHeaderInput =
+            document.getElementById(
+                "email-header-input"
+            );
+
+        const analyzeHeaderButton =
+            document.getElementById(
+                "analyze-header-button"
+            );
+
+        const headerResultsElement =
+            document.getElementById(
+                "header-analysis-results"
+            );
+
+        const headerFromElement =
+            document.getElementById(
+                "header-from"
+            );
+
+        const headerReplyToElement =
+            document.getElementById(
+                "header-reply-to"
+            );
+
+        const headerReturnPathElement =
+            document.getElementById(
+                "header-return-path"
+            );
+
+        const headerSubjectElement =
+            document.getElementById(
+                "header-subject"
+            );
+
+        const headerMessageIdElement =
+            document.getElementById(
+                "header-message-id"
+            );
+
+        const headerSpfElement =
+            document.getElementById(
+                "header-spf"
+            );
+
+        const headerDkimElement =
+            document.getElementById(
+                "header-dkim"
+            );
+
+        const headerDmarcElement =
+            document.getElementById(
+                "header-dmarc"
+            );
+
+        const headerFindingsListElement =
+            document.getElementById(
+                "header-findings-list"
+            );
 
         let currentUrl = "";
 
@@ -543,6 +599,135 @@ document.addEventListener(
                     statusElement.textContent =
                         "Unable to inspect this page.";
                 }
+            }
+        );
+
+        analyzeHeaderButton.addEventListener(
+            "click",
+            () => {
+
+                const rawHeaders =
+                    emailHeaderInput.value;
+
+                const result =
+                    analyzeEmailHeader(
+                        rawHeaders
+                    );
+
+                if (!result.valid) {
+
+                    statusElement.textContent =
+                        result.error;
+
+                    return;
+                }
+
+
+                headerFromElement.textContent =
+                    result.from || "Not found";
+
+
+                headerReplyToElement.textContent =
+                    result.replyTo || "Not found";
+
+
+                headerReturnPathElement.textContent =
+                    result.returnPath || "Not found";
+
+
+                headerSubjectElement.textContent =
+                    result.subject || "Not found";
+
+
+                headerMessageIdElement.textContent =
+                    result.messageId || "Not found";
+
+
+                headerSpfElement.textContent =
+                    result.spf.toUpperCase();
+
+
+                headerDkimElement.textContent =
+                    result.dkim.toUpperCase();
+
+
+                headerDmarcElement.textContent =
+                    result.dmarc.toUpperCase();
+
+
+                headerFindingsListElement.innerHTML =
+                    "";
+
+
+                if (
+                    result.findings.length === 0
+                ) {
+
+                    headerFindingsListElement.innerHTML =
+                        `
+                        <div class="finding">
+                            No significant email-header indicators detected.
+                        </div>
+                        `;
+
+                } else {
+
+                    for (
+                        const finding
+                        of result.findings
+                    ) {
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        item.className =
+                            "finding";
+
+
+                        item.innerHTML =
+                            `
+                            <div class="finding-header">
+
+                                <span class="severity">
+                                    ${finding.severity}
+                                </span>
+
+                                <strong>
+                                    ${finding.title}
+                                </strong>
+
+                            </div>
+
+                            <p>
+                                ${finding.description}
+                            </p>
+
+                            <span class="finding-score">
+                                +${finding.score}
+                            </span>
+                            `;
+
+
+                        headerFindingsListElement
+                            .appendChild(
+                                item
+                            );
+                    }
+                }
+
+
+                headerResultsElement
+                    .classList
+                    .remove(
+                        "hidden"
+                    );
+
+
+                statusElement.textContent =
+                    `Header analysis complete — ${result.risk} risk (${result.score}/100)`;
             }
         );
     }

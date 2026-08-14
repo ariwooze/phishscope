@@ -1,0 +1,6 @@
+From: Example Bank Security <security@example-bank.test>
+Reply-To: support@suspicious.example
+Return-Path: <mailer@different.example>
+Subject: URGENT: Verify Your Account
+Message-ID: <98765@suspicious.example>
+Authentication-Results: mx.example.test; spf=fail; dkim=fail; dmarc=fail
