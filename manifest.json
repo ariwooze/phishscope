@@ -1,13 +1,20 @@
 {
   "manifest_version": 3,
   "name": "PhishScope",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A browser extension for phishing link analysis and email triage.",
 
   "permissions": [
     "activeTab",
-    "tabs"
+    "tabs",
+    "contextMenus",
+    "storage",
+    "scripting"
   ],
+
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
 
   "action": {
     "default_title": "PhishScope",

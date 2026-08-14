@@ -182,3 +182,53 @@ h1 {
     font-size: 11px;
     font-weight: bold;
 }
+
+#context-analysis {
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+
+#context-url {
+    margin-bottom: 10px;
+    font-size: 12px;
+    word-break: break-all;
+}
+
+
+#view-context-button {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#inspect-links-button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+#page-link-results {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+
+#page-link-summary {
+    margin-bottom: 10px;
+    font-size: 12px;
+}

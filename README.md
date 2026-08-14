@@ -540,11 +540,15 @@ All repository samples should use synthetic or reserved testing information rath
 
 ### Browser Integration
 
-- [ ] Add right-click context-menu analysis
-- [ ] Analyze selected hyperlinks
-- [ ] Add current-page analysis
-- [ ] Extract visible hyperlinks
-- [ ] Detect misleading hyperlink destinations
+- [x] Add right-click context menu
+- [x] Capture selected link
+- [x] Analyze selected link
+- [x] Store result in extension storage
+- [x] Display stored result in popup
+- [x] Add page-link inspection
+- [x] Extract webpage hyperlinks
+- [x] Compare displayed URL with actual destination
+- [x] Detect misleading hyperlinks
 
 ### Email Triage
 

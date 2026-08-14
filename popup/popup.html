@@ -22,6 +22,25 @@
 
         <main>
 
+            <section
+                id="context-analysis"
+                class="hidden"
+            >
+
+                <p class="label">
+                    Last Analyzed Link
+                </p>
+
+                <div id="context-url">
+                    -
+                </div>
+
+                <button id="view-context-button">
+                    View Link Analysis
+                </button>
+
+            </section>
+
             <section class="url-section">
 
                 <p class="label">
@@ -36,7 +55,11 @@
 
 
             <button id="analyze-button">
-                Analyze URL
+                Analyze Current URL
+            </button>
+
+            <button id="inspect-links-button">
+                Inspect Page Links
             </button>
 
 
@@ -123,6 +146,23 @@
 
             </section>
 
+            <section
+                id="page-link-results"
+                class="hidden"
+            >
+
+                <p class="label">
+                    Page Link Inspection
+                </p>
+
+                <div id="page-link-summary">
+                    -
+                </div>
+
+                <div id="link-mismatch-list">
+                </div>
+
+            </section>
 
             <div id="status">
                 Ready for analysis
