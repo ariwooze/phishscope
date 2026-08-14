@@ -34,9 +34,95 @@
 
             </section>
 
+
             <button id="analyze-button">
                 Analyze URL
             </button>
+
+
+            <section
+                id="analysis-results"
+                class="hidden"
+            >
+
+                    <div class="url-details">
+
+                        <p class="label">
+                            URL Details
+                        </p>
+
+                        <div class="detail-row">
+                            <span class="detail-label">
+                                Protocol
+                            </span>
+
+                            <span id="detail-protocol">
+                                -
+                            </span>
+                        </div>
+
+                        <div class="detail-row">
+                            <span class="detail-label">
+                                Hostname
+                            </span>
+
+                            <span id="detail-hostname">
+                                -
+                            </span>
+                        </div>
+
+                        <div class="detail-row">
+                            <span class="detail-label">
+                                Port
+                            </span>
+
+                            <span id="detail-port">
+                                -
+                            </span>
+                        </div>
+
+                        <div class="detail-row">
+                            <span class="detail-label">
+                                Path
+                            </span>
+
+                            <span id="detail-path">
+                                -
+                            </span>
+                        </div>
+
+                    </div>
+
+                <div class="risk-summary">
+
+                    <p class="label">
+                        Risk
+                    </p>
+
+                    <div id="risk-level">
+                        -
+                    </div>
+
+                   <div id="risk-score">
+                        Score: -
+                    </div>
+
+                </div>
+
+
+                <div class="findings-section">
+
+                    <p class="label">
+                        Findings
+                    </p>
+
+                    <div id="findings-list">
+                    </div>
+
+                </div>
+
+            </section>
+
 
             <div id="status">
                 Ready for analysis
@@ -46,6 +132,7 @@
 
     </div>
 
+    <script src="../scripts/url_analyzer.js"></script>
     <script src="popup.js"></script>
 
 </body>

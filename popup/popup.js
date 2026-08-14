@@ -1,54 +1,264 @@
-document.addEventListener("DOMContentLoaded", async () => {
+function isSupportedUrl(url) {
+    return (
+        url.startsWith("http://") ||
+        url.startsWith("https://")
+    );
+}
 
-    const currentUrlElement =
-        document.getElementById("current-url");
+function getDisplayPort(
+    protocol,
+    port
+) {
 
-    const analyzeButton =
-        document.getElementById("analyze-button");
+    if (port) {
+        return port;
+    }
 
-    const statusElement =
-        document.getElementById("status");
+    if (protocol === "https:") {
+        return "443 (default)";
+    }
 
-    try {
+    if (protocol === "http:") {
+        return "80 (default)";
+    }
 
-        const tabs = await chrome.tabs.query({
-            active: true,
-            currentWindow: true
-        });
+    return "Default";
+}
 
-        const currentTab = tabs[0];
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
 
-        console.log("Current tab:", currentTab);
+        const currentUrlElement =
+            document.getElementById(
+                "current-url"
+            );
 
-        if (currentTab && currentTab.url) {
+        const analyzeButton =
+            document.getElementById(
+                "analyze-button"
+            );
+
+        const statusElement =
+            document.getElementById(
+                "status"
+            );
+
+        const resultsElement =
+            document.getElementById(
+                "analysis-results"
+            );
+
+        const riskLevelElement =
+            document.getElementById(
+                "risk-level"
+            );
+
+        const riskScoreElement =
+            document.getElementById(
+                "risk-score"
+            );
+
+        const findingsListElement =
+            document.getElementById(
+                "findings-list"
+            );
+            
+        const protocolElement =
+            document.getElementById(
+                "detail-protocol"
+            );
+
+        const hostnameElement =
+            document.getElementById(
+                "detail-hostname"
+            );
+
+        const portElement =
+            document.getElementById(
+                "detail-port"
+            );
+
+        const pathElement =
+            document.getElementById(
+                "detail-path"
+            );
+
+
+        let currentUrl = "";
+
+
+        try {
+
+            const tabs =
+                await chrome.tabs.query({
+                    active: true,
+                    currentWindow: true
+                });
+
+            const currentTab =
+                tabs[0];
+
+
+            if (
+                currentTab &&
+                currentTab.url
+            ) {
+
+                currentUrl =
+                    currentTab.url;
+
+                currentUrlElement.textContent =
+                    currentUrl;
+
+
+                // Check whether the current page
+                // is supported by PhishScope
+                if (!isSupportedUrl(currentUrl)) {
+
+                    currentUrlElement.textContent =
+                        "This page cannot be analyzed.";
+
+                    analyzeButton.disabled =
+                        true;
+
+                    statusElement.textContent =
+                        "Only HTTP and HTTPS URLs are supported.";
+
+                }
+
+            } else {
+
+                currentUrlElement.textContent =
+                    "Unable to retrieve URL";
+
+                analyzeButton.disabled =
+                    true;
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
 
             currentUrlElement.textContent =
-                currentTab.url;
+                "Error retrieving current URL";
 
-        } else {
-
-            currentUrlElement.textContent =
-                "Unable to retrieve URL";
+            analyzeButton.disabled =
+                true;
 
         }
 
-    } catch (error) {
 
-        console.error(
-            "Unable to retrieve current tab:",
-            error
+        analyzeButton.addEventListener(
+            "click",
+            () => {
+
+                if (!currentUrl) {
+                    return;
+                }
+
+                const result =
+                    analyzeUrl(currentUrl);
+
+                if (!result.valid) {
+
+                    statusElement.textContent =
+                        result.error;
+
+                    return;
+                }
+
+                protocolElement.textContent =
+                    result.protocol
+                        .replace(":", "")
+                        .toUpperCase();
+
+                hostnameElement.textContent =
+                    result.hostname;
+
+                portElement.textContent =
+                    getDisplayPort(
+                        result.protocol,
+                        result.port
+                    );
+
+                pathElement.textContent =
+                    result.pathname || "/";
+
+                riskLevelElement.textContent =
+                    result.risk;
+
+                riskScoreElement.textContent =
+                    `Score: ${result.score}/100`;
+
+                findingsListElement.innerHTML =
+                    "";
+
+                if (
+                    result.findings.length === 0
+                ) {
+
+                    findingsListElement.innerHTML =
+                        `
+                        <div class="finding">
+                            No suspicious URL indicators detected.
+                        </div>
+                        `;
+
+                } else {
+
+                    for (
+                        const finding
+                        of result.findings
+                    ) {
+
+                        const findingElement =
+                            document.createElement(
+                                "div"
+                            );
+
+                        findingElement.className =
+                            "finding";
+
+                        findingElement.innerHTML =
+                            `
+                            <div class="finding-header">
+                                <span class="severity">
+                                    ${finding.severity}
+                                </span>
+
+                                <strong>
+                                    ${finding.title}
+                                </strong>
+                            </div>
+
+                            <p>
+                                ${finding.description}
+                            </p>
+
+                            <span class="finding-score">
+                                +${finding.score}
+                            </span>
+                            `;
+
+                        findingsListElement.appendChild(
+                            findingElement
+                        );
+
+                    }
+
+                }
+
+                resultsElement.classList.remove(
+                    "hidden"
+                );
+
+                statusElement.textContent =
+                    "Analysis complete";
+
+            }
         );
 
-        currentUrlElement.textContent =
-            "Error retrieving current URL";
     }
-
-
-    analyzeButton.addEventListener("click", () => {
-
-        statusElement.textContent =
-            "URL analysis will be added in Phase 2.";
-
-    });
-
-});
+);

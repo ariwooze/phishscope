@@ -1,0 +1,23 @@
+# Normal
+https://example.com/
+
+# Suspicious keyword
+https://example.com/login/verify/account
+
+# Excessive subdomains
+https://account.login.security.example.com/
+
+# Unusual port
+https://example.com:8443/login
+
+# IP address
+http://192.0.2.50/login
+
+# URL shortener
+https://bit.ly/example
+
+# At symbol
+https://paypal.example@example.com/login
+
+# Long URL
+https://example.com/account/verification/security/update/password/authentication/example-example-example-example-example
