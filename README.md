@@ -509,7 +509,7 @@ All repository samples should use synthetic or reserved testing information rath
 
 ## Development Roadmap
 
-### Phase 1 — Extension Foundation
+### Extension Foundation
 
 - [x] Create repository structure
 - [x] Create `manifest.json`
@@ -518,20 +518,27 @@ All repository samples should use synthetic or reserved testing information rath
 - [x] Load extension in developer mode
 - [x] Read current browser tab URL
 
-### Phase 2 — URL Analysis
+### URL Analysis
 
-- [ ] Parse URLs
-- [ ] Extract hostname
-- [ ] Extract registered domain
-- [ ] Detect raw IP addresses
-- [ ] Detect HTTP URLs
-- [ ] Detect suspicious ports
-- [ ] Detect suspicious keywords
-- [ ] Detect URL shorteners
-- [ ] Detect excessive subdomains
-- [ ] Detect Punycode
+- [x] Parse URLs
+- [x] Extract hostname
+- [x] Extract protocol
+- [x] Extract port
+- [x] Detect raw IP addresses
+- [x] Detect HTTP URLs
+- [x] Detect suspicious ports
+- [x] Detect suspicious keywords
+- [x] Detect URL shorteners
+- [x] Detect excessive subdomains
+- [x] Detect Punycode
+- [x] Detect @ symbol
+- [x] Detect unusually long URLs
+- [x] Calculate risk score
+- [x] Display explainable findings
+- [x] Handle unsupported browser pages
+- [x] Display parsed URL components
 
-### Phase 3 — Browser Integration
+### Browser Integration
 
 - [ ] Add right-click context-menu analysis
 - [ ] Analyze selected hyperlinks
@@ -539,7 +546,7 @@ All repository samples should use synthetic or reserved testing information rath
 - [ ] Extract visible hyperlinks
 - [ ] Detect misleading hyperlink destinations
 
-### Phase 4 — Email Triage
+### Email Triage
 
 - [ ] Add email-header input
 - [ ] Parse sender information
@@ -550,7 +557,7 @@ All repository samples should use synthetic or reserved testing information rath
 - [ ] Extract DMARC results
 - [ ] Detect header mismatches
 
-### Phase 5 — Risk Analysis
+### Risk Analysis
 
 - [ ] Standardize finding structure
 - [ ] Assign severity levels
@@ -558,7 +565,7 @@ All repository samples should use synthetic or reserved testing information rath
 - [ ] Display evidence for each finding
 - [ ] Improve extension results interface
 
-### Phase 6 — Threat Intelligence
+### Threat Intelligence
 
 - [ ] Research secure API-key handling
 - [ ] Add optional VirusTotal integration
@@ -566,7 +573,7 @@ All repository samples should use synthetic or reserved testing information rath
 - [ ] Check URL reputation
 - [ ] Handle API errors and rate limits
 
-### Phase 7 — Testing and Documentation
+### Testing and Documentation
 
 - [ ] Create synthetic URL samples
 - [ ] Create synthetic email-header samples
